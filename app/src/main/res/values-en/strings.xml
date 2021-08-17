@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SinGal Dictionary</string>
+    <string name="button_send">Search</string>
+
+ 
+    <string name="info">Information</string>
+    <string name="iraweb">Web version</string>
+    <string name="contacto">Contact information:</string>
+    <string name="share">Share link</string>
+
+    <string name="recuncar">Nothing found\nSearch again</string>
+	<string name="creditos">Credits</string>
+
+    <string name="edicion">\nGómez Clemente, Xosé María, Xavier Gómez Guinovart e Alberto Simões (2015): Dicionario de sinónimos do galego. Vigo: Xerais.\n\nBased on Noia Campos, Camiño, Xosé María Gómez Clemente e Pedro Benavente Jareño (eds.) (1997): Diccionario de sinónimos da lingua galega. Vigo: Galaxia.\n
+
+        </string>
+</resources>

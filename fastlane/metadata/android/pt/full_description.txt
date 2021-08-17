@@ -1,0 +1,5 @@
+O Dicionário SinGal é um Dicionário de Sinônimos do Galego com 200.000 palavras agrupadas em 45.000 acepções (30.000 entradas) pela sua semelhança de significado.
+
+O Dicionário SinGal é a versão móvel offline e de código aberto do Dicionario de Sinónimos do Galego (http://sli.uvigo.gal/singal/) elaborado por Xosé María Gómez Clemente, Xavier Gómez Guinovart e Alberto Simões (Vigo: Xerais, 2015) no Seminario de Lingüística Informática da Universidade de Vigo (http://sli.uvigo.gal), onde se pode consultar livremente desde 2013. Este dicionário é o resultado da revisão, actualização, ampliação e conversão a formato digital estruturado do Dicionario de Sinónimos da Lingua Galega (Vigo: Galaxia, 1997), já descatalogado, publicado baixo a coordenação de Camiño Noia, Xosé María Gómez Clemente e Pedro Benavente, e que contou com a participação de Gonzalo Constela, Xosé Henrique Costas e Valentín Arias na sua redacção.
+
+Informação de contato: Xavier Gómez Guinovart (xgg2021@gmail.com)

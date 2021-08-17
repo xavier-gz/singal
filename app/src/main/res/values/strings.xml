@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Dicionario SinGal</string>
+    <string name="info">Información</string>
+    <string name="iraweb">Versión web</string>
+    <string name="contacto">Información de contacto:</string>
+    <string name="recuncar">Ningún resultado\nProcurar de novo</string>
+
+    <string name="datos" translatable="false">\n\n
+        Xavier Gómez Guinovart\n
+    📧  xgg2021@gmail.com\n
+    🌐  http://sli.uvigo.gal\n
+    </string>
+    <string name="button_send">Procura</string>
+    <string name="share">Compartir ligazón</string>
+
+    <string name="creditos">Créditos</string>
+
+    <string name="edicion">\nGómez Clemente, Xosé María, Xavier Gómez Guinovart e Alberto Simões (2015): Dicionario de sinónimos do galego. Vigo: Xerais.\n\nBaseado en Noia Campos, Camiño, Xosé María Gómez Clemente e Pedro Benavente Jareño (eds.) (1997): Diccionario de sinónimos da lingua galega. Vigo: Galaxia.\n
+
+    </string>
+
+</resources>
