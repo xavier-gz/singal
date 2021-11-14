@@ -16,11 +16,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import static android.content.ContentValues.TAG;
-
 public class DataBaseHelper extends SQLiteOpenHelper {
 
-    private static String DB_PATH = "/data/data/gal.sli.singal/databases/";
+    //private static String DB_PATH = "/data/data/gal.sli.singal/databases/";
+    private static String DB_PATH;
 
     private static final String DB_NAME = "singal.db"; //en assets
 
@@ -35,28 +34,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         super(context, DB_NAME, null, DATABASE_VERSION);
         this.myContext = context;
-    }
-
-    public void createDataBase_ori() throws IOException {
-
-        boolean dbExist = checkDataBase();
-
-        if (dbExist) {
-        } else {
-
-            this.getReadableDatabase();
-
-            try {
-
-                copyDataBase();
-
-            } catch (IOException e) {
-
-                throw new Error("Error copying database");
-
-            }
-        }
-
+        DB_PATH = myContext.getDatabasePath(DB_NAME).getPath();
     }
 
 
@@ -81,31 +59,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void createDataBase_test() throws IOException {
-
-        boolean dbExist = checkDataBase();
-
-        if (dbExist) {
-            Log.d(TAG, "db exists");
-
-            this.getWritableDatabase();
-        }
-
-        dbExist = checkDataBase();
-
-        if (!dbExist) {
-
-            this.getReadableDatabase();
-
-            try {
-                copyDataBase();
-
-            } catch (IOException e) {
-                throw new Error("Error copying database");
-            }
-        }
-    }
-
 
     private boolean checkDataBase() {
 
@@ -116,6 +69,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
 
         } catch (SQLiteException e) {
+
+            //database does't exist yet
 
         }
 

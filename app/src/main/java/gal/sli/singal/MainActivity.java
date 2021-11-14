@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
                 f.show();
 
-                ((TextView) f.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+                ((TextView) Objects.requireNonNull(f.findViewById(android.R.id.message))).setMovementMethod(LinkMovementMethod.getInstance());
 
                 return true;
 
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 e.show();
 
-                ((TextView)e.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+                ((TextView) Objects.requireNonNull(e.findViewById(android.R.id.message))).setMovementMethod(LinkMovementMethod.getInstance());
 
                 return true;
 

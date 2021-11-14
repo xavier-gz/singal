@@ -2,7 +2,6 @@ package gal.sli.singal;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.SQLException;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -13,7 +12,6 @@ import androidx.appcompat.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Html;
 import android.text.SpannableString;
@@ -32,23 +30,11 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-
-
+import java.util.Objects;
 
 
 public class DisplayMessageActivity extends AppCompatActivity {
 
-    private List<String> listDataGroup;
-
-    private HashMap<String, List<String>> listDataChild;
-
-
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,32 +58,21 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         }
 
-        try {
+        myDbHelper.openDataBase();
 
-            myDbHelper.openDataBase();
-
-        } catch (SQLException sqle) {
-
-            throw sqle;
-
-        }
-
-        String palabra = message;
-
-
-        ArrayList<String> resultado = myDbHelper.getOneItem(palabra);
+        ArrayList<String> resultado = myDbHelper.getOneItem(message);
 
 
         if ((resultado.isEmpty()) ) {
 
-            Intent refresh = new Intent(this, MainActivity.class);
-
-            overridePendingTransition( 0, 0);
-            startActivity(refresh);
-            overridePendingTransition( 0, 0);
-
-            Toast toast = Toast.makeText(this.getBaseContext(), getString(R.string.recuncar), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, getString(R.string.recuncar), Toast.LENGTH_LONG);
+            toast.getView();
             toast.show();
+
+            Intent refresh = new Intent(this, MainActivity.class);
+            refresh.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(refresh);
+            finish();
 
         } else {
 
@@ -109,7 +84,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
             ColorDrawable colorDrawable
                     = new ColorDrawable(Color.parseColor("#933DB5"));
 
-            actionBar.setBackgroundDrawable(colorDrawable);
+            if (actionBar != null) {
+                actionBar.setBackgroundDrawable(colorDrawable);
+            }
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_row_child, resultado)
             {
@@ -119,7 +96,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
                     View row;
                     LayoutInflater mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     if (null == convertView) {
-                        row = mInflater.inflate(R.layout.list_row_child, null);
+                        row = mInflater.inflate(R.layout.list_row_child, parent, false);
                     } else {
                         row = convertView;
                     }
@@ -170,7 +147,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
                     e.show();
 
-                    ((TextView) e.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+                    ((TextView) Objects.requireNonNull(e.findViewById(android.R.id.message))).setMovementMethod(LinkMovementMethod.getInstance());
 
                     return true;
 
@@ -189,7 +166,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
                     f.show();
 
-                    ((TextView) f.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+                    ((TextView) Objects.requireNonNull(f.findViewById(android.R.id.message))).setMovementMethod(LinkMovementMethod.getInstance());
 
                     return true;
 
